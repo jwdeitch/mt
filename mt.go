@@ -133,9 +133,13 @@ func GenerateScreenshots(fn string) []image.Image {
 	}
 
 	if inc <= 60000 {
+		numcaps = int(math.Max(float64(inc/1000), float64(1)))
 		log.Warn("very small timestamps in use... consider decreasing numcaps")
 	}
+
+
 	if inc <= 9000 {
+		numcaps = int(math.Max(float64(inc/1000), float64(1)))
 		log.Errorf("interval (%ds) is way to small (less then 9s), please decrease numcaps", inc/1000)
 	}
 
